@@ -2,7 +2,7 @@
 
 Neon Encryptor is a .txt - text encryptor which works on Java Swing GUI and Base64 binary-to-text encoding scheme algorithm. This is a visual encoder, more than a real encryption algorithm like AES. 
 
-Working:
+*Working:*
 
 ![Screenshot 1](imgs/1.jpg)
 
@@ -14,7 +14,7 @@ And stored records are retrieved from the SQLite database and placed back into t
 
 Although not yet developed, a future feature could allow users to decrypt any text from the location of their choosing, and give them further visualization hints should they need to manage updates.
 
-Storage and management
+*Storage and management*
 
 ![Screenshot 3](imgs/3.jpg)
 When users encrypt text, they have the option to save it in an SQLite database in the application’s local storage. 
@@ -29,11 +29,12 @@ Any time a new message is stored, the Neon Encryptor will issue a confirmation n
 ![Screenshot 7](imgs/7.jpg)
 Users also need the ability to Clear the Messages/Records made by the application. If a user wants to remove any saved messages from local storage, there is a button, located in the button panel, labelled Clear Records. Pressing the button will issue a warning confirmation dialog box, and will delete all records from local storage. 
 
+*Exiting the Java Application*
 ![Screenshot 8](imgs/8.jpg)
 ![Screenshot 9](imgs/9.jpg)
 Exit on command - exits the Java application.
 
-Conclusion
+*Conclusion*
 
 The Neon Encryptor, as a standalone Java GUI application using SQLite locally, will deliver a fast and input friendly experience that is only limited by the Java platform.
 
