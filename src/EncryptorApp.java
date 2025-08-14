@@ -21,7 +21,6 @@ public class EncryptorApp extends JFrame {
     private JPanel mainPanel;
 
 
-    // UI Theme Constants
     private static final Color BG_COLOR = new Color(224, 247, 250);
     private static final Color ACCENT_COLOR = new Color(0, 191, 255);
     private static final Color TEXT_AREA_BG = Color.WHITE;
@@ -40,7 +39,7 @@ public class EncryptorApp extends JFrame {
         connectDatabase();
         createTableIfNotExists();
 
-        // Action Listeners
+
         encryptBtn.addActionListener(e -> startEncryptionTask());
         viewBtn.addActionListener(e -> startViewTask());
         clearBtn.addActionListener(e -> startClearTask());
@@ -53,7 +52,7 @@ public class EncryptorApp extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Main Panel Setup (as before)
+
         mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
         mainPanel.setBackground(BG_COLOR);
@@ -85,19 +84,19 @@ public class EncryptorApp extends JFrame {
         btnPanel.add(clearBtn); btnPanel.add(exitBtn);
         mainPanel.add(btnPanel, BorderLayout.SOUTH);
 
-        // Loading Panel and Layered Pane for Overlay
+
         loadingPanel = new BinaryLoadingPanel();
         loadingPanel.setVisible(false);
 
         layeredPane = new JLayeredPane();
-        // ** THE FIX IS HERE: Add components and a ComponentAdapter to handle resizing **
+
         layeredPane.add(mainPanel, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(loadingPanel, JLayeredPane.PALETTE_LAYER);
 
         layeredPane.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                // Ensure both layers are always the same size as the pane
+          
                 mainPanel.setBounds(0, 0, layeredPane.getWidth(), layeredPane.getHeight());
                 loadingPanel.setBounds(0, 0, layeredPane.getWidth(), layeredPane.getHeight());
             }
@@ -116,7 +115,7 @@ public class EncryptorApp extends JFrame {
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
     }
     
-    // ** THE FIX IS HERE: A much more robust way to enable/disable controls **
+
     private void setControlsEnabled(Container container, boolean enable) {
         for (Component c : container.getComponents()) {
             c.setEnabled(enable);
@@ -126,7 +125,7 @@ public class EncryptorApp extends JFrame {
         }
     }
     
-    // Task Control Methods
+
 
     private void startEncryptionTask() {
         String text = inputArea.getText().trim();
@@ -161,7 +160,7 @@ public class EncryptorApp extends JFrame {
         }
     }
 
-    // --- SwingWorker Classes (No changes) ---
+
     class EncryptWorker extends SwingWorker<Boolean, Void> {
         private final String textToEncrypt;
         public EncryptWorker(String text) { this.textToEncrypt = text; }
@@ -248,7 +247,7 @@ public class EncryptorApp extends JFrame {
         }
     }
     
-    // --- BinaryLoadingPanel Class (No changes) ---
+
     class BinaryLoadingPanel extends JPanel implements ActionListener {
         private final Timer timer;
         private final ArrayList<BinaryChar> binaryChars;
@@ -338,7 +337,6 @@ public class EncryptorApp extends JFrame {
     }
     
     
-    // --- Unchanged Methods ---
     private void showRecordsDialog(DefaultTableModel model) {
         JTable table = new JTable(model);
         table.setFont(new Font("Segoe UI", Font.PLAIN, 14));
